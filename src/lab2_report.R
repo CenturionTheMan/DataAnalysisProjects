@@ -69,41 +69,41 @@ getTrainMeasures <- function(x){
 
 tableTime <- data.frame(
   Miara = tableMeasuresNames,
-  'Transparent' = getTrainMeasures(dTime$t$`Time [s]`),
-  'Red' = getTrainMeasures(dTime$r$`Time [s]`),
-  'Yellow' = getTrainMeasures(dTime$y$`Time [s]`)
+  'T' = getTrainMeasures(dTime$t$`Time [s]`),
+  'R' = getTrainMeasures(dTime$r$`Time [s]`),
+  'Y' = getTrainMeasures(dTime$y$`Time [s]`)
 )
 SaveTableToCSV("summaryTime.csv", tableTime)
 
 tableAge <- data.frame(
   Miara = tableMeasuresNames,
-  'Transparent' = getTrainMeasures(dAge$t$`AGE [y]`),
-  'Red' = getTrainMeasures(dAge$r$`AGE [y]`),
-  'Yellow' = getTrainMeasures(dAge$y$`AGE [y]`)
+  'T' = getTrainMeasures(dAge$t$`AGE [y]`),
+  'R' = getTrainMeasures(dAge$r$`AGE [y]`),
+  'Y' = getTrainMeasures(dAge$y$`AGE [y]`)
 )
 SaveTableToCSV("summaryAge.csv", tableAge)
 
 tableExperience <- data.frame(
   Miara = tableMeasuresNames,
-  'Transparent' = getTrainMeasures(ifelse(dExperience$t$`Do you have any professional experience beyond intership?`=="YES",1,0)),
-  'Red' = getTrainMeasures(ifelse(dExperience$r$`Do you have any professional experience beyond intership?`=="YES",1,0)),
-  'Yellow' = getTrainMeasures(ifelse(dExperience$y$`Do you have any professional experience beyond intership?`=="YES",1,0))
+  'T' = getTrainMeasures(ifelse(dExperience$t$`Do you have any professional experience beyond intership?`=="YES",1,0)),
+  'R' = getTrainMeasures(ifelse(dExperience$r$`Do you have any professional experience beyond intership?`=="YES",1,0)),
+  'Y' = getTrainMeasures(ifelse(dExperience$y$`Do you have any professional experience beyond intership?`=="YES",1,0))
 )
 SaveTableToCSV("summaryExperience.csv", tableExperience)
 
 tableHSTestResults <- data.frame(
   Miara = tableMeasuresNames,
-  'Transparent' = getTrainMeasures(dHSTestResults$t$`TEST 0-10 points`),
-  'Red' = getTrainMeasures(dHSTestResults$r$`TEST 0-10 points`),
-  'Yellow' = getTrainMeasures(dHSTestResults$y$`TEST 0-10 points`)
+  'T' = getTrainMeasures(dHSTestResults$t$`TEST 0-10 points`),
+  'R' = getTrainMeasures(dHSTestResults$r$`TEST 0-10 points`),
+  'Y' = getTrainMeasures(dHSTestResults$y$`TEST 0-10 points`)
 )
 SaveTableToCSV("summaryHSTestResults.csv", tableHSTestResults)
 
 tableSex <- data.frame(
   Miara = tableMeasuresNames,
-  'Transparent' = getTrainMeasures(as.numeric(as.factor(dSex$t$`M / F / O`))),
-  'Red' = getTrainMeasures(as.numeric(as.factor(dSex$r$`M / F / O`))),
-  'Yellow' = getTrainMeasures(as.numeric(as.factor(dSex$y$`M / F / O`)))
+  'T' = getTrainMeasures(as.numeric(as.factor(dSex$t$`M / F / O`))),
+  'R' = getTrainMeasures(as.numeric(as.factor(dSex$r$`M / F / O`))),
+  'Y' = getTrainMeasures(as.numeric(as.factor(dSex$y$`M / F / O`)))
 )
 SaveTableToCSV("summarySex.csv", tableSex)
 
@@ -118,8 +118,8 @@ CreateHist <- function(figTitle, xAxisName, t,r,y){
   par(oma=c(0,0,2,0))
   
   hist(x = t, col = "White", main = "Gogle przezroczyste", xlab = xAxisName, ylab = "Częstość")
-  hist(x = r, col = "Red", main="Gogle czerwone", xlab = xAxisName, ylab = "Częstość")
-  hist(x = y, col = "Yellow", main="Gogle zółte", xlab = xAxisName, ylab = "Częstość")
+  hist(x = r, col = "R", main="Gogle czerwone", xlab = xAxisName, ylab = "Częstość")
+  hist(x = y, col = "Y", main="Gogle zółte", xlab = xAxisName, ylab = "Częstość")
   
   mtext(figTitle, outer=TRUE, cex=1.5, font=2)
   
@@ -177,8 +177,8 @@ CreateBoxplot <- function(figTitle, yAxisName, t,r,y){
   par(oma=c(0,0,2,0))
   
   boxplot(x = t, col = "White", main = "Gogle przezroczyste", ylab = yAxisName)
-  boxplot(x = r, col = "Red", main="Gogle czerwone",ylab = yAxisName)
-  boxplot(x = y, col = "Yellow", main="Gogle zółte", ylab = yAxisName)
+  boxplot(x = r, col = "R", main="Gogle czerwone",ylab = yAxisName)
+  boxplot(x = y, col = "Y", main="Gogle zółte", ylab = yAxisName)
   
   mtext(figTitle, outer=TRUE, cex=1.5, font=2)
   
