@@ -42,13 +42,13 @@ Create3ColumnHist <- function(figTitle, path, t, r, y) {
   hist(x = r, col = "Red", main="Gogle czerwone", xlab = "Czas skupienia na żółtej torbie [s]", ylab = "Częstość")
   hist(x = y, col = "Yellow", main="Gogle żółte", xlab = "Czas skupienia na żółtej torbie [s]", ylab = "Częstość")
   
-  mtext(figTitle, outer=TRUE, cex=1.5, font=2)
+  mtext(figTitle, outer=TRUE, cex=1, font=2)
   
   dev.off()
 }
 
 SaveFrameToCsv <- function(dataframe, path) {
-  write.csv(dataframe, paste0("./res_tables/", path), row.names = FALSE)
+  write.csv(dataframe, paste0("./res_tables/", path), row.names = FALSE, quote=FALSE)
 }
 
 
@@ -62,9 +62,9 @@ HandleNormalityForData <- function(t,r,y, hist_title_sub, hist_path_sub, frame_s
   alpha <- 0.05
   
   shapiroData <- data.frame(
-    "kolor_gogli" = c('przezroczysty', 'czerwony', 'żółty'),
-    "shapiro_p" = c(shapiro.test(t)$p, shapiro.test(r)$p, shapiro.test(y)$p),
-    "czy_normalny" = c(
+    "kolorGogli" = c('przezroczysty', 'czerwony', 'żółty'),
+    "shapiroP" = c(shapiro.test(t)$p, shapiro.test(r)$p, shapiro.test(y)$p),
+    "czyNormalny" = c(
       ifelse(shapiro.test(t)$p > alpha, "normalny", "nienormalny"),
       ifelse(shapiro.test(r)$p > alpha, "normalny", "nienormalny"),
       ifelse(shapiro.test(y)$p > alpha, "normalny", "nienormalny")

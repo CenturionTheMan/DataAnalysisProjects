@@ -50,7 +50,7 @@ dExperience = list(
 
 # CREATE TABLES
 SaveTableToCSV <- function(fileName, df){
-  write.csv(df, paste0("./res_tables/", fileName), row.names = FALSE)
+  write.csv(df, paste0("./res_tables/", fileName), row.names = FALSE, quote=FALSE)
 }
 
 tableMeasuresNames <- c("średnia", "odchylenie std.", "mediana", "1. kwartyl", "3. kwartyl", "minimum", "maksimum")
@@ -118,10 +118,10 @@ CreateHist <- function(figTitle, xAxisName, t,r,y){
   par(oma=c(0,0,2,0))
   
   hist(x = t, col = "White", main = "Gogle przezroczyste", xlab = xAxisName, ylab = "Częstość")
-  hist(x = r, col = "R", main="Gogle czerwone", xlab = xAxisName, ylab = "Częstość")
-  hist(x = y, col = "Y", main="Gogle zółte", xlab = xAxisName, ylab = "Częstość")
+  hist(x = r, col = "Red", main="Gogle czerwone", xlab = xAxisName, ylab = "Częstość")
+  hist(x = y, col = "Yellow", main="Gogle zółte", xlab = xAxisName, ylab = "Częstość")
   
-  mtext(figTitle, outer=TRUE, cex=1.5, font=2)
+  mtext(figTitle, outer=TRUE, cex=1, font=2)
   
   dev.off()
 } 
@@ -177,10 +177,10 @@ CreateBoxplot <- function(figTitle, yAxisName, t,r,y){
   par(oma=c(0,0,2,0))
   
   boxplot(x = t, col = "White", main = "Gogle przezroczyste", ylab = yAxisName)
-  boxplot(x = r, col = "R", main="Gogle czerwone",ylab = yAxisName)
-  boxplot(x = y, col = "Y", main="Gogle zółte", ylab = yAxisName)
+  boxplot(x = r, col = "Red", main="Gogle czerwone",ylab = yAxisName)
+  boxplot(x = y, col = "Yellow", main="Gogle zółte", ylab = yAxisName)
   
-  mtext(figTitle, outer=TRUE, cex=1.5, font=2)
+  mtext(figTitle, outer=TRUE, cex=1, font=2)
   
   dev.off()
 } 
@@ -208,3 +208,37 @@ CreateBoxplot(
   r = dHSTestResults$r$`TEST 0-10 points`,
   y = dHSTestResults$y$`TEST 0-10 points`
 )
+
+
+
+############################# TFD -> yellow bag
+dTFD = list(
+  t =  LoadDataFromSheet("TFD_T_Total_Fixation_Duration"),
+  r = LoadDataFromSheet("TFD_R_Total_Fixation_Duration"),
+  y = LoadDataFromSheet("TFD_Y_Total_Fixation_Duration_")
+)
+
+tableTFD_yBag_Results <- data.frame(
+  Miara = tableMeasuresNames,
+  'T' = getTrainMeasures(dTFD$t$`Y bag`),
+  'R' = getTrainMeasures(dTFD$r$`Y bag`),
+  'Y' = getTrainMeasures(dTFD$y$`Y bag`)
+)
+SaveTableToCSV("summaryTFD_yBag.csv", tableTFD_yBag_Results)
+
+CreateHist(
+  figTitle= "Histogram dla czasu skupienia na żółtej torbie",
+  xAxisName = "Czas [s]",
+  t = dTFD$t$`Y bag`,
+  r = dTFD$r$`Y bag`,
+  y = dTFD$y$`Y bag`
+)
+
+CreateBoxplot(
+  figTitle= "Wykres pudełkowy dla czasu skupienia na żółtej torbie",
+  yAxisName = "Czas [s]",
+  t = dTFD$t$`Y bag`,
+  r = dTFD$r$`Y bag`,
+  y = dTFD$y$`Y bag`
+)
+
