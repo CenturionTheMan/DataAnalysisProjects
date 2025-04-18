@@ -271,8 +271,28 @@
         \label{fig:histYBagLog}
     \end{figure}
 
+    \begin{figure}[H]
+        \centering
+        \caption{Wykres kwartyl-kwartyl dla czasu skupienia na żółtej torbie }
+        \resizebox{0.7 \columnwidth}{!}{%
+        \includegraphics{./../res_plots/qqplot_dla_TFD_yBag.png}%
+        }
+        \label{fig:qqplotYBagLog}
+    \end{figure}
 
-    \subsection{Równość wariancji w grupach} %TODO
+    \subsection{Równość wariancji w grupach}
+        Na podstawie wyników z sekcji \textit{''Normalność zmiennej w grupach''} można stwierdzić, że
+        że rozkład zmiennej TFD w grupach jest normalny. 
+        Dlatego do analizy równości wariancji w grupach użyto testu Levene'a. 
+
+        Hipotezy testowe:
+        \begin{itemize}
+            \item $H_0$: wariancje we wszystkich grupach są równe.
+            \item $H_1$:  co najmniej jedna grupa ma inną wariancję.
+        \end{itemize}
+        Otrzymana wartość wynosi $p=0.240$, co oznacza, że na poziomie istotności $\alpha=0.05$
+        nie ma podstaw do odrzucenia hipotezy zerowej.
+
     \subsection{Równość średnich w grupach} %TODO
         \subsubsection{Uzasadnienie wyboru testu na podstawie wyników analiz z punktów 2-5} %TODO
         \subsubsection{Przeprowadzenie testu - wynik i wnioski} %TODO

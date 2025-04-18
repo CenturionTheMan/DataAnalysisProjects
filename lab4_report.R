@@ -67,6 +67,7 @@ ttff_for_chi = c(
   T = ttff %>% filter(goggles == "Transparent") %>% select(Y.bag) %>% unlist(),
   Y = ttff %>% filter(goggles == "Yellow") %>% select(Y.bag) %>% unlist()
 )
+#TODO ....
 
 
 #=================== RÓWNOŚĆ WARIANCJI ===================
