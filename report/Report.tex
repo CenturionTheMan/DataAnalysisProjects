@@ -153,7 +153,11 @@
     \end{figure}
 
 \section{Analiza TFD dla obiektu żółta torba (yellow bag)} %TODO
-    \subsection{Hipotezy} %TODO
+    \subsection{Hipotezy}
+    \begin{itemize}
+        \item $H_0$: Nie ma różnicy w czasie skupienia na żółtej torbie (TFD-Y bag) pomiędzy grupami z doświadczeniem i bez doświadczenia.
+        \item $H_1$: Grupa z doświadczaniem ma dłuższy czas skupienia na żółtej torbie (TFD-Y bag) niż grupa bez doświadczenia.
+    \end{itemize}
     \subsection{Analiza deskryptywna zmiennej}
     \begin{table}[H]
         \centering
@@ -185,6 +189,14 @@
     \end{figure}
 
     \subsection{Równoliczność grup} %TODO
+    Dla sprawdzenia równoliczności grup wykonano test $\chi^2$.
+    Hipotezy:
+    \begin{itemize}
+        \item $H_0$: liczebności grup są równe.
+        \item $H_1$: liczebności grup są różne.
+    \end{itemize}
+    Otrzymana wartość wynosi $p=0.926$, co oznacza, że na poziomie istotności $\alpha=0.05$
+    nie ma podstaw do odrzucenia hipotezy zerowej. 
     
     \subsection{Normalność zmiennej w grupach}
     \begin{table}[H]
@@ -280,10 +292,16 @@
         \label{fig:qqplotYBagLog}
     \end{figure}
 
+    Dla grupy czerwonej i przezroczystej wykonane testy wskazują na normalność rozkładu zmiennej TFD-Y bag.
+    Dla grupy żółtej testy shapiro-wilka nie pozwala na przyjcie H0 świadczącej o normalności rozkładu,
+    niemniej otrzymana wartość p jest bliska granicy istotności $\alpha=0.05$ oraz wykresy histogramu i wykresy
+    kwartyl-kwartyl sugerują, że rozkład jest zbliżony do normalnego.
+    Dlatego można przyjąć, że rozkład zmiennej TFD-Y bag jest normalny we wszystkich grupach. 
     \subsection{Równość wariancji w grupach}
-        Na podstawie wyników z sekcji \textit{''Normalność zmiennej w grupach''} można stwierdzić, że
-        że rozkład zmiennej TFD w grupach jest normalny. 
-        Dlatego do analizy równości wariancji w grupach użyto testu Levene'a. 
+        Na podstawie wyników z sekcji \textit{''Normalność zmiennej w grupach''} stwierdzono, 
+        normalność rozkładu zmiennej TFD-Y bag w grupach. Mając jednak na uwadze, że rozkład
+        zmiennej TFD-Y bag w grupie żółtej nie jest idealnie normalny, przeprowadzono test Levene'a
+        wycentrowanego na podstawie średniej.
 
         Hipotezy testowe:
         \begin{itemize}

@@ -60,14 +60,14 @@ dev.off()
 
 
 #=================== RÓWNOLICZNOSC ===================
-tmp <- ttff %>% select(Y.bag, goggles)
+ttff %>% 
+  select(Y.bag, goggles) %>% 
+  drop_na() %>% 
+  pull(goggles) %>% 
+  table() %>% 
+  chisq.test() %>% 
+  print()
 
-ttff_for_chi = c(
-  R = ttff %>% filter(goggles == "Red") %>% select(Y.bag) %>% unlist(),
-  T = ttff %>% filter(goggles == "Transparent") %>% select(Y.bag) %>% unlist(),
-  Y = ttff %>% filter(goggles == "Yellow") %>% select(Y.bag) %>% unlist()
-)
-#TODO ....
 
 
 #=================== RÓWNOŚĆ WARIANCJI ===================
@@ -77,7 +77,7 @@ ttff_for_chi = c(
 #Oznacza to, że nie stwierdzono istotnych różnic między wariancjami w analizowanych grupach.
 
 ttff %>%
-  levene_test(Y.bag ~ goggles) %>%
+  levene_test(Y.bag ~ goggles, center=mean) %>%
   mutate(
     p = paste0("Wartość p = ", p),
   ) %>%
