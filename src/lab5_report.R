@@ -14,9 +14,9 @@ load_or_install("rstatix")
 # Nazwy arkuszy i pliku
 exp_sheets <- c("T_EXPERIENCE", "R_EXPERIENCE", "Y_EXPERIENCE")
 var_sheets <- c(
-  "TTFF_T_Time_to_First_Fixation", 
-  "TTFF_R_Time_to_First_Fixation", 
-  "TTFF_Y_Time_to_First_Fixation_"
+  "TFD_T_Total_Fixation_Duration", 
+  "TFD_R_Total_Fixation_Duration", 
+  "TFD_Y_Total_Fixation_Duration_"
 )
 # Kolory gogli, w kolejności wynikającej z arkuszy tj. var_sheets
 goggle_cols <- c("Transparent", "Red", "Yellow")
@@ -66,7 +66,7 @@ names(experience) <- make.names(names(experience))
 merged_data <- inner_join(
   experience,
   ttff,
-  by = c("participant.nr" = "Participant")
+  by = c("participant.nr" = "Participant.nr")
 )
 
 # 4. Zweryfikuj normalność rozkładów w grupach
@@ -77,7 +77,8 @@ shapiro_full
 ######################### p1=1.21e-13, p2=5.42e-10 => H0 odrzucone -> rozdkład nie jest normalny
 
 # 5. Zweryfikuj homogeniczność wariancji
-# rozkład nienormalny więc flinger
+# rozkład NORMALNY więc flinger
+# !!! TODO -> DO POPRAWY!!!!!!!!
 fligner.test(merged_data$Y.bag, merged_data$experience)
 ######################### p=0.9825 => H0 przyjęte -> wariancje są równe
 
