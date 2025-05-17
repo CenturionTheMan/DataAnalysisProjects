@@ -65,7 +65,39 @@ check_assumptions <- function(data, dv, iv, alpha=0.05) {
 }
 
 #### FUNCTIONS END ####
-#### PLANT GROWTH ####
+
+var_sheets <- c(
+  "TFD_T_Total_Fixation_Duration", 
+  "TFD_R_Total_Fixation_Duration", 
+  "TFD_Y_Total_Fixation_Duration_"
+)
+goggle_cols <- c("Transparent", "Red", "Yellow")
+file_path <- "data/ALL_DATA_TRANSPARENT_YELLOW_RED GOGLES_ON_CONSTRUCTION_SITE.ods"
+
+read_and_combine_ods_sheets <- function(file_path, sheets, skip_rows = 1, include_source = TRUE) {
+  all_data <- lapply(sheets, function(sheet) {
+    read_ods(file_path, sheet = sheet, skip = skip_rows)
+  })
+  names(all_data) <- sheets
+  if (include_source) {
+    bind_rows(all_data, .id = "source_sheet")
+  } else {
+    bind_rows(all_data)
+  }
+}
+
+ttff <- read_and_combine_ods_sheets(file_path, var_sheets)
+
+goggles_map <- setNames(goggle_cols, var_sheets)
+ttff <- ttff %>%
+  mutate(goggles = recode(source_sheet, !!!goggles_map))
+
+names(ttff) <- make.names(names(ttff))
+
+ttff %>% summary_stats(dv = Y.bag, iv = goggles)
+ttff %>% check_assumptions(dv = Y.bag, iv=goggles)
+ttff %>% anova_test(Y.bag ~ goggles) %>% print()
+ttff %>% tukey_hsd(Y.bag ~ goggles) %>% kable() %>% print()
 
 
 

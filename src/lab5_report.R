@@ -74,17 +74,41 @@ shapiro_full <- merged_data %>%
   group_by(experience) %>%
   shapiro_test(Y.bag)
 shapiro_full
-######################### p1=1.21e-13, p2=5.42e-10 => H0 odrzucone -> rozdkład nie jest normalny
+
 
 # 5. Zweryfikuj homogeniczność wariancji
 # rozkład NORMALNY więc flinger
 # !!! TODO -> DO POPRAWY!!!!!!!!
-fligner.test(merged_data$Y.bag, merged_data$experience)
-######################### p=0.9825 => H0 przyjęte -> wariancje są równe
+var.test(Y.bag ~ experience, data = merged_data)
+
 
 # 6. Wybierz właściwy test do porywnania położenia dwóch grup - osób doświadczonych i niedoświadczonych
 # H0: Nie ma różnicy w czasie skupienia na żółtej torbie (TFD-Y bag) pomiędzy grupami z doświadczeniem i bez doświadczenia.
 # H1: Grupa z doświadczaniem ma dłuższy czas skupienia na żółtej torbie (TFD-Y bag) niż grupa bez doświadczenia.
 merged_data %>% 
-  wilcox_test(Y.bag ~ experience, alternative = 'greater')
-######################### p=0.515 => H0 przyjęte -> doświadczenie nie ma wpływu
+  wilcox_test(Y.bag ~ experience, alternative = 'less')
+
+
+tableMeasuresNames <- c("średnia", "odchylenie std.", "mediana", "1. kwartyl", "3. kwartyl", "minimum", "maksimum")
+getTrainMeasures <- function(x){
+  tmp <- c(
+    mean(x),
+    sd(x),
+    median(x),
+    quantile(x = x, probs=0.25),
+    quantile(x = x, probs=0.75),
+    min(x),
+    max(x)
+  )
+  return(tmp)
+}
+SaveTableToCSV <- function(fileName, df){
+  write.csv(df, paste0("./res_tables/", fileName), row.names = FALSE, quote=FALSE)
+}
+tableExp <- data.frame(
+  Miara = tableMeasuresNames,
+  'ZExp' = getTrainMeasures(merged_data %>% filter(experience == "YES") %>% pull(Y.bag)),
+  'BezExp' = getTrainMeasures(merged_data %>% filter(experience == "NO") %>% pull(Y.bag)) 
+)
+print(tableExp)
+SaveTableToCSV("summaryExp_ybag.csv", tableExp)
