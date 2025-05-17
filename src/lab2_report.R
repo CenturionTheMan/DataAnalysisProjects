@@ -109,22 +109,54 @@ SaveTableToCSV("summarySex.csv", tableSex)
 
 # HISTOGRAMY
 
-CreateHist <- function(figTitle, xAxisName, t,r,y){
+CreateHist <- function(figTitle, xAxisName, t, r, y, xlim = NULL) {
   png(paste0("./res_plots/", SpaceToUnderscore(figTitle), '.png'), width=800, height=600, res=150)
   
-  time_layout <- matrix(c(1,2,3), nrow=1, ncol=3, byrow = TRUE)
+  time_layout <- matrix(c(1,2,3), nrow=1, ncol=3, byrow=TRUE)
   layout(time_layout)
   
   par(oma=c(0,0,2,0))
   
-  hist(x = t, col = "White", main = "Gogle przezroczyste", xlab = xAxisName, ylab = "Częstość")
-  hist(x = r, col = "Red", main="Gogle czerwone", xlab = xAxisName, ylab = "Częstość")
-  hist(x = y, col = "Yellow", main="Gogle zółte", xlab = xAxisName, ylab = "Częstość")
+  # Define a helper function to conditionally include the 'breaks' argument
+  plot_hist <- function(data, col, main) {
+    if (is.null(xlim)) {
+      hist(x = data, col = col, main = main, xlab = xAxisName, ylab = "Częstość")
+    } else {
+      hist(x = data, col = col, main = main, xlab = xAxisName, ylab = "Częstość", xlim = xlim)
+    }
+  }
+  
+  plot_hist(t, "White", "Gogle przezroczyste")
+  plot_hist(r, "Red", "Gogle czerwone")
+  plot_hist(y, "Yellow", "Gogle zółte")
   
   mtext(figTitle, outer=TRUE, cex=1, font=2)
   
   dev.off()
-} 
+}
+
+CreateGroupedBarPlot <- function(figTitle, xAxisName, t, r, y, groupLabels) {
+  png(paste0("./res_plots/", SpaceToUnderscore(figTitle), ".png"), width = 800, height = 600, res = 150)
+  
+  layout(matrix(1:3, nrow = 1, byrow = TRUE))
+  par(oma = c(0, 0, 2, 0))  # Outer margin area for main title
+  
+  # Helper function to count and plot data
+  plot_group_bar <- function(data, col, mainTitle) {
+    data <- factor(data, levels = 1:length(groupLabels), labels = groupLabels)
+    counts <- table(data)
+    barplot(counts, col = col, main = mainTitle, xlab = xAxisName, ylab = "Częstość", ylim = c(0, max(counts) + 1))
+  }
+  
+  plot_group_bar(t, "white", "Gogle przezroczyste")
+  plot_group_bar(r, "red", "Gogle czerwone")
+  plot_group_bar(y, "yellow", "Gogle żółte")
+  
+  mtext(figTitle, outer = TRUE, cex = 1, font = 2)
+  
+  dev.off()
+}
+
 
 CreateHist(
   figTitle= "Histogram dla czasu",
@@ -147,25 +179,30 @@ CreateHist(
   xAxisName = "Wynik testu [0-10]",
   t = dHSTestResults$t$`TEST 0-10 points`,
   r = dHSTestResults$r$`TEST 0-10 points`,
-  y = dHSTestResults$y$`TEST 0-10 points`
+  y = dHSTestResults$y$`TEST 0-10 points`,
+  xlim=NULL
 )
 
-CreateHist(
+
+CreateGroupedBarPlot(
   figTitle= "Histogram dla doświadczenia zawodowego",
-  xAxisName = "Doświadczenie [0-1]",
-  t = ifelse(dExperience$t$`Do you have any professional experience beyond intership?`=="YES",1,0),
-  r = ifelse(dExperience$r$`Do you have any professional experience beyond intership?`=="YES",1,0),
-  y = ifelse(dExperience$y$`Do you have any professional experience beyond intership?`=="YES",1,0)
+  xAxisName = "Posiada doświadczenie",
+  t = as.numeric(as.factor(dExperience$t$`Do you have any professional experience beyond intership?`)),
+  r = as.numeric(as.factor(dExperience$r$`Do you have any professional experience beyond intership?`)),
+  y = as.numeric(as.factor(dExperience$y$`Do you have any professional experience beyond intership?`)),
+  groupLabels = c("NIE", "TAK")
 )
 
 
-CreateHist(
-  figTitle= "Histogram dla płci (F=1, M=2, O=3)",
-  xAxisName = "Płeć [1/2/3]",
+CreateGroupedBarPlot(
+  figTitle = "Histogram dla płci",
+  xAxisName = "Płeć",
   t = as.numeric(as.factor(dSex$t$`M / F / O`)),
   r = as.numeric(as.factor(dSex$r$`M / F / O`)),
-  y = as.numeric(as.factor(dSex$y$`M / F / O`))
+  y = as.numeric(as.factor(dSex$y$`M / F / O`)),
+  groupLabels = c("F", "M", "O")
 )
+
 
 #PUDEŁKOWE
 CreateBoxplot <- function(figTitle, yAxisName, t,r,y){
