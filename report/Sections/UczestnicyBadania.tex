@@ -2,7 +2,7 @@
         \subsubsection*{Wiek}
         \begin{table}[H]
             \centering
-            \caption{Opis deskryptywny wieku uczestników badania.}
+            \caption{Opis deskryptywny wieku (w latach) uczestników badania.}
             \begin{tabular}{|c|c|c|c|}%
                 \hline
                 \bfseries Miara & \bfseries Gogle przezroczyste & \bfseries Gogle czerwone & \bfseries Gogle żółte% specify table head
@@ -15,8 +15,8 @@
 
         \begin{figure}[H]
             \centering
-            \caption{Histogram dla wieku uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \caption{Histogram dla wieku (w latach) uczestników badania.}
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Histogram_dla_wieku.png}%
             }
             \label{fig:histAge}
@@ -24,8 +24,8 @@
 
         \begin{figure}[H]
             \centering
-            \caption{Wykres pudełkowy dla wieku uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \caption{Wykres pudełkowy dla wieku (w latach) uczestników badania.}
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Wykres_pudełkowy_dla_wieku.png}%
             }
             \label{fig:boxAge}
@@ -48,7 +48,7 @@
         \begin{figure}[H]
             \centering
             \caption{Histogram dla doświadczenia zawodowego uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Histogram_dla_doświadczenia_zawodowego.png}%
             }
             \label{fig:histExperience}
@@ -72,7 +72,7 @@
         \begin{figure}[H]
             \centering
             \caption{Histogram dla wyników testu \textit{''health and safety''} (H\&S) uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Histogram_dla_wyników_testu_H&S.png}%
             }
             \label{fig:histHSTestResults}
@@ -81,7 +81,7 @@
         \begin{figure}[H]
             \centering
             \caption{Wykres pudełkowy dla wyników testu \textit{''health and safety''} (H\&S) uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Wykres_pudełkowy_dla_wyników_testu_H&S.png}%
             }
             \label{fig:boxHSTestResults}
@@ -104,17 +104,24 @@
         \begin{figure}[H]
             \centering
             \caption{Histogram dla płci uczestników badania.}
-            \resizebox{0.7 \columnwidth}{!}{%
+            \resizebox{0.70 \columnwidth}{!}{%
             \includegraphics{./../res_plots/Histogram_dla_płci.png}%
             }
             \label{fig:histEsx}
         \end{figure}
 
+    Na podstawie danych demograficznych uczestników badania można zauważyć, że:
+    \begin{itemize}
+        \item Wiek uczestników badania wahał się od 18 do 65 lat, przy czym większość uczestników była w przedziale wiekowym 20-25 lat (tabela [\ref{tab:summaryAge}], rysunek [\ref{fig:histAge}, \ref{fig:boxAge}]).
+        \item Liczba osób deklarujących doświadczenie zawodowe jest porównywalna z liczbą osób bez doświadczenia dla dla grupy przezroczystej. W pozostałych stosunek uczestników z doświadczeniem do tych bez doświadczenia wynosi około 2:1 (tabela [\ref{tab:summaryExperience}], rysunek [\ref{fig:histExperience}]).
+        \item Żaden z uczestnikow nie otrzymał mniej niż 7 punktów w teście H\&S, co sugeruje, że wszyscy uczestnicy badania mieli przynajmniej podstawową wiedzę na temat zasad BHP (tabela [\ref{tab:summaryHSTestResults}], rysunek [\ref{fig:histHSTestResults}, \ref{fig:boxHSTestResults}]).
+        \item W badaniu wzięło udział więcej mężczyzn niż kobiet (tabela [\ref{tab:summarySex}], rysunek [\ref{fig:histEsx}]).  
+    \end{itemize} 
 
     \subsection{Czas noszenia gogli}
     \begin{table}[H]
         \centering
-        \caption{Opis deskryptywny czasu noszenia gogli uczestników badania.}
+        \caption{Opis deskryptywny czasu noszenia gogli (w sekundach) uczestników badania.}
         \begin{tabular}{|c|c|c|c|}%
             \hline
             \bfseries Miara & \bfseries Gogle przezroczyste & \bfseries Gogle czerwone & \bfseries Gogle żółte% specify table head
@@ -127,8 +134,8 @@
 
     \begin{figure}[H]
         \centering
-        \caption{Histogram dla czasu noszenia gogli uczestników badania.}
-        \resizebox{0.7 \columnwidth}{!}{%
+        \caption{Histogram dla czasu noszenia gogli (w sekundach) uczestników badania.}
+        \resizebox{0.70 \columnwidth}{!}{%
         \includegraphics{./../res_plots/Histogram_dla_czasu.png}%
         }
         \label{fig:histTime}
@@ -136,9 +143,12 @@
 
     \begin{figure}[H]
         \centering
-        \caption{Wykres pudełkowy dla czasu noszenia gogli uczestników badania.}
-        \resizebox{0.7 \columnwidth}{!}{%
+        \caption{Wykres pudełkowy dla czasu noszenia (w sekundach) gogli uczestników badania.}
+        \resizebox{0.70 \columnwidth}{!}{%
         \includegraphics{./../res_plots/Wykres_pudełkowy_dla_czasu.png}%
         }
         \label{fig:boxTime}
     \end{figure}
+
+    Wszystkie grupy uczestników badania nosiły gogle przez minimum 6 minut a średni czas wynosił około 8 minut.
+    Większość uczestników (I kwartyl) nosiła gogle przez około 7.5 minuty  (tabela [\ref{tab:summaryTime}], rysunek [\ref{fig:histTime}, \ref{fig:boxTime}]).

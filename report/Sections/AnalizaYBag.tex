@@ -1,17 +1,17 @@
     %?%%%%%%%%%%%%%%%%%%%%%%%%%%%%% HIPOTEZY %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsection{Hipotezy}
-    Głównym celem badania było sprawdzenie, czy kolor okularów wpływa na czas skupienia na żółtej torbie (TFD-Y bag).
+    Głównym celem badania było sprawdzenie, czy kolor okularów wpływa na czas skupienia (fiksacji) na żółtej torbie.
     W ramach tego celu sformułowano następujące hipotezy:
     \begin{itemize}
-        \item $H_0$: Średnie czasy skupienia na żółtej torbie (TFD-Y bag) są równe dla wszystkich grup kolorów okularów.
-        \item $H_1$: Nie dla wszystkich grup kolorów okularów średnie czasy skupienia na żółtej torbie (TFD-Y bag) są równe.
+        \item $H_0$: Średnie czasy skupienia na żółtej torbie są równe dla wszystkich grup kolorów okularów.
+        \item $H_1$: Nie dla wszystkich grup kolorów okularów średnie czasy skupienia na żółtej torbie są równe.
     \end{itemize}
     
-    Dodatkowo, w ramach badania, sprawdzono wpływ doświadczenia na czas skupienia na żółtej torbie (TFD-Y bag).
+    Dodatkowo, w ramach badania, sprawdzono wpływ doświadczenia zawodowego na czas skupienia na żółtej torbie.
     W tym celu sformułowano następujące hipotezy:
     \begin{itemize}
-        \item $H_0$: Nie ma różnicy w czasie skupienia na żółtej torbie (TFD-Y bag) pomiędzy grupami z doświadczeniem i bez doświadczenia.
-        \item $H_1$: Grupa z doświadczaniem ma dłuższy czas skupienia na żółtej torbie (TFD-Y bag) niż grupa bez doświadczenia.
+        \item $H_0$: Nie ma różnicy w czasie skupienia na żółtej torbie pomiędzy grupami z doświadczeniem i bez doświadczenia.
+        \item $H_1$: Grupa z doświadczaniem ma dłuższy czas skupienia na żółtej torbie niż grupa bez doświadczenia.
     \end{itemize}
     
     %?%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analiza deskryptywna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,7 +45,7 @@
         \caption{Wykres pudełkowy dla zmiennej TFD dla obiektu żółta torba (yellow bag).}
     \end{figure}
 
-    %?%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Analiza deskryptywna %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    %?%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Równoliczność grup %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \subsection{Równoliczność grup}
     Dla sprawdzenia równoliczności grup wykonano test $\chi^2$ z następującymi hipotezami:
     \begin{itemize}
@@ -59,7 +59,7 @@
 
     \subsection{Normalność zmiennej w grupach}
     Do analizy normalności rozkładu zastosowane zostały histogramy oraz test Shapiro-Wilka. Oprócz analizy standardowych wartości
-    zmiennej TFD-Y bag, przeprowadzono również analizy dla ich przekształceń: pierwiastka z X, pierwiastka kwadratowego z X oraz logarytmu z X.
+    zmiennej TFD-Y bag, przeprowadzono również analizy dla ich przekształceń: pierwiastek z X, pierwiastek kwadratowy z X oraz logarytm z X.
 
     \begin{table}[H]
         \centering
@@ -155,23 +155,23 @@
     \end{figure}
      
     Na podstawie otrzymanych histogramów [\ref{fig:histYBagDefault} - \ref{fig:histYBagLog}] i wyników testu Shapiro-Wilka 
-    [\ref{tab:shapiroYBagDefault} - \ref{tab:shapiroYBagLog}] można stwierdzić, że \textbf{rozkłady są  najbliższe normalności dla danych bez przekształceń}.
+    [\ref{tab:shapiroYBagDefault} - \ref{tab:shapiroYBagLog}] można stwierdzić, że \textbf{rozkłady są najbliższe normalności dla danych bez przekształceń}.
     Dla grupy czerwonej i przezroczystej wykonane testy wskazują na normalność rozkładu zmiennej TFD-Y bag.
-    Dla grupy żółtej testy shapiro-wilka [\ref{tab:shapiroYBagDefault}] nie pozwala na przyjcie H0 świadczącej o normalności rozkładu,
+    Dla grupy żółtej testy Shapiro-Wilka [\ref{tab:shapiroYBagDefault}] nie pozwala na przyjcie H0 świadczącej o normalności rozkładu,
     niemniej otrzymana wartość p jest bliska granicy istotności $\alpha=0.05$ oraz wykresy histogramu [\ref{fig:histYBagDefault}] i wykresy
     kwartyl-kwartyl [\ref{fig:qqplotYBag}] sugerują, że rozkład jest zbliżony do normalnego.
-    Dlatego można przyjąć, że \textbf{rozkład zmiennej TFD-Y bag jest normalny we wszystkich grupach}. 
+    Dlatego przyjęto, że \textbf{rozkład zmiennej TFD-Y bag jest normalny we wszystkich grupach}. 
 
     \subsection{Równość wariancji w grupach}
         Na podstawie wyników z sekcji \textit{''Normalność zmiennej w grupach''} stwierdzono, 
-        normalność rozkładu zmiennej TFD-Y bag w grupach. Mając jednak na uwadze, że rozkład
-        zmiennej TFD-Y bag w grupie żółtej nie jest idealnie normalny, przeprowadzono test Levene'a
+        normalność rozkładu zmiennej TFD-Y bag. Mając jednak na uwadze, że rozkład w grupie żółtej nie jest idealnie normalny, 
+        przeprowadzono test Levene'a
         wycentrowanego na podstawie średniej, który jest bardziej odporny na odchylenia od normalności.
 
         Hipotezy:
         \begin{itemize}
             \item $H_0$: wariancje we wszystkich grupach są równe.
-            \item $H_1$:  co najmniej jedna grupa ma inną wariancję.
+            \item $H_1$: co najmniej jedna grupa ma inną wariancję.
         \end{itemize}
         Otrzymana wartość wynosi $p=0.240$, co oznacza, że na poziomie istotności $\alpha=0.05$
         nie ma podstaw do odrzucenia hipotezy zerowej. Na tej podstawie można stwierdzić, że \textbf{wariancje są równe}.
@@ -188,18 +188,18 @@
         \subsubsection{Przeprowadzenie testu - wynik i wnioski}
         Hipotezy dla jednoczynnikowego testu ANOVA:
         \begin{itemize}
-            \item $H_0$: średnie czasy skupienia na żółtej torbie (TFD-Y bag) są równe dla wszystkich grup kolorów okularów.
-            \item $H_1$: przynajmniej jedna para średnich czasów skupienia na żółtej torbie (TFD-Y bag) jest istotnie różna.
+            \item $H_0$: średnie czasy skupienia na żółtej torbie są równe dla wszystkich grup kolorów okularów.
+            \item $H_1$: przynajmniej jedna para średnich czasów skupienia na żółtej torbie jest istotnie różna.
         \end{itemize}
 
         Hipotezy dla testu Tukeya (dla każdej pary grup):
         \begin{itemize}
-            \item $H_0$: średnie czasy skupienia na żółtej torbie (TFD-Y bag) są równe dla danej pary grup kolorów okularów.
-            \item $H_1$: średnie czasy skupienia na żółtej torbie (TFD-Y bag) są różne dla danej pary grup kolorów okularów.
+            \item $H_0$: średnie czasy skupienia na żółtej torbie są równe dla danej pary grup kolorów okularów.
+            \item $H_1$: średnie czasy skupienia na żółtej torbie są różne dla danej pary grup kolorów okularów.
         \end{itemize}
 
         Dla przeprowadzonego testu ANOVA otrzymano wartość $p=0.002$, co oznacza, że na poziomie istotności $\alpha=0.05$
-        można odrzucić hipotezę zerową. Na tej podstawie można stwierdzić, że \textbf{średnie czasy skupienia na żółtej torbie (TFD-Y bag) są różne dla przynajmniej jednej pary grup kolorów okularów}.
+        można odrzucić hipotezę zerową. Na tej podstawie można stwierdzić, że \textbf{średnie czasy skupienia na żółtej torbie są różne dla przynajmniej jednej pary grup kolorów okularów}.
 
         Dla przeprowadzonego testu Tukeya otrzymano następujące wyniki:
         \begin{table}[H]
@@ -218,9 +218,9 @@
 
         Na podstawie tabeli [\ref{tab:Tukeya}] można stwierdzić, że średnie czasy skupienia na żółtej torbie są równe dla grupy czerwonej i przezroczystej,
         natomiast różnią się dla grupy czerwonej i żółtej oraz grupy przezroczystej i żółtej. Dodając do tego wyniki zawarte w tabeli 
-        [\ref{tab:summaryTFD_yBag}] można stwierdzić, że \textbf{grupa żółta ma najkrótszy czas skupienia na żółtej torbie}.
+        [\ref{tab:summaryTFD_yBag}] można założyć, że \textbf{grupa żółta ma najkrótszy czas skupienia na żółtej torbie}.
 
-    \subsection{Wpływ doświadczenia na zmienną TFD}
+    \subsection{Wpływ doświadczenia zawodowego na zmienną TFD-Y bag}
     Dodatkowo, w ramach badania, sprawdzono wpływ doświadczenia na czas skupienia na żółtej torbie.
     W przeprowadzonym badaniu doświadczenie jest binarne, uczestnik może mieć doświadczenie lub nie.
     
